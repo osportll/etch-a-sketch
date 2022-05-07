@@ -45,4 +45,10 @@ divs.forEach(smallDivs => {
     })
 })
 
+divs.forEach(smallDivs => {
+    smallDivs.ondragstart = () => {
+        return false;
+    }
+});
+
 
