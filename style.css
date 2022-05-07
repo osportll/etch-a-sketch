@@ -1,14 +1,18 @@
-.grid {
-    height: 50px;
-    width: 50px;
-    border: solid black 1px;
+.boxes {
+    height: 30px;
+    width: 30px;
+    border: solid rgb(119, 118, 118) 1px;
     margin: 0;
-    background-color: aliceblue;
+    background-color: #eee;
+}
+
+.hover {
+    background-color: rgb(54, 54, 54);
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 500px;
-    max-height: 1000px;
+    max-width: 50%;
+    max-height: 50%;
 }
