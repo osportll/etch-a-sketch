@@ -67,6 +67,8 @@ divs.forEach(smallDivs => {
 });
 };
 
+
+
 /**
  * TODO: create a modal that lets you select an specific size of the grid. That way I can control what size all the grids.
  */
