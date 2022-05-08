@@ -4,7 +4,7 @@ let changeGrid = document.querySelector('.change-grid');
 
 
 
-let gridSize = 500;
+let gridSize = 100;
 
 function createGrid() {
 
@@ -19,48 +19,23 @@ function createGrid() {
 createGrid();
 draw();
 
-
 function createNewGrid() {
-
-    gridSize = prompt("Enter a number to change grid size.");
-
-    console.log(gridSize);
-
-    for (let i = 0; i < gridSize; i++) {
-
-        container.appendChild(newDiv.cloneNode(true));
-        newDiv.classList.add('newBoxes');
-        newDiv.classList.remove('boxes');
-
-    }
-
-    let oldDivs = document.querySelectorAll('.boxes');
-    console.log(oldDivs);
+    gridSize = prompt("Enter a number");
     
-    
-    oldDivs.forEach(smallDivs => {
-        smallDivs.setAttribute('style', 'display: none;');
-    });
+    document.querySelectorAll(".boxes").forEach((e) => e.parentNode.removeChild(e));
 
+    createGrid();
     draw();
-
-};
+}
 
 
 changeGrid.addEventListener('click', createNewGrid);
 
 
-function draw(divs) {
 
-if (newDiv.classList.contains('boxes')) {
-    divs = document.querySelectorAll('.boxes');
-    console.log(divs);
+function draw() {
 
-} else if (newDiv.classList.contains('newBoxes')) {
-    divs = document.querySelectorAll('.newBoxes');
-    console.log(divs);
-}
-
+let divs = document.querySelectorAll('.boxes');
 
 let isDrawing = false;
 
@@ -94,10 +69,6 @@ divs.forEach(smallDivs => {
 };
 
 
-function newDraw() {
-
-
-}
 
 
 
