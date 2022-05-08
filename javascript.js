@@ -4,7 +4,7 @@ let changeGrid = document.querySelector('.change-grid');
 
 
 
-let gridSize = 100;
+let gridSize = 257;
 
 function createGrid() {
 
@@ -28,9 +28,7 @@ function createNewGrid() {
     draw();
 }
 
-
 changeGrid.addEventListener('click', createNewGrid);
-
 
 
 function draw() {
@@ -41,9 +39,10 @@ let isDrawing = false;
 
 
 divs.forEach(smallDivs => {
-    smallDivs.addEventListener('mousedown', () => {
+    smallDivs.addEventListener('mousedown', (e) => {
         isDrawing = true;
         console.log(isDrawing);
+        e.stopImmediatePropagation();
     })
 
     smallDivs.addEventListener('mouseup', () => {
@@ -68,7 +67,7 @@ divs.forEach(smallDivs => {
 });
 };
 
-
-
-
+/**
+ * TODO: create a modal that lets you select an specific size of the grid. That way I can control what size all the grids.
+ */
 
