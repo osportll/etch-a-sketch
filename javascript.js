@@ -5,11 +5,10 @@ let maxWidth = 500;
 
 
 let rowsAndColumns = 16;
-let gridSize = rowsAndColumns * rowsAndColumns;
 
 function createGrid() {
 
-    for (let i = 0; i < gridSize; i++) {
+    for (let i = 0; i < rowsAndColumns * rowsAndColumns; i++) {
 
         newDiv.classList.add('boxes');
         container.appendChild(newDiv.cloneNode(true));
@@ -26,12 +25,14 @@ createGrid();
 draw();
 
 function createNewGrid() {
-    gridSize = prompt("Enter a number");
+    rowsAndColumns = prompt("Enter a number");
     
     document.querySelectorAll(".boxes").forEach((e) => e.parentNode.removeChild(e));
 
     createGrid();
     draw();
+
+    return rowsAndColumns;
 }
 
 changeGrid.addEventListener('click', createNewGrid);
