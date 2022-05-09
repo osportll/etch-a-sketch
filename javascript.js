@@ -1,18 +1,24 @@
 let newDiv = document.createElement('div');
 let container = document.querySelector('.container'); 
 let changeGrid = document.querySelector('.change-grid');
+let maxWidth = 500;
 
 
-
-let gridSize = 16 * 16;
+let rowsAndColumns = 16;
+let gridSize = rowsAndColumns * rowsAndColumns;
 
 function createGrid() {
 
     for (let i = 0; i < gridSize; i++) {
 
-        container.appendChild(newDiv.cloneNode(true));
         newDiv.classList.add('boxes');
+        container.appendChild(newDiv.cloneNode(true));
     }
+
+    let containerSize = maxWidth / rowsAndColumns;
+
+    container.style.gridTemplateRows = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
+    container.style.gridTemplateColumns = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
 
 };
 
