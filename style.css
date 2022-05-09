@@ -6,9 +6,7 @@ body {
     margin: 0;
 }
 
-
-
-.boxes {
+/* .boxes {
     height: 35px;
     width: 35px;
     border: solid rgb(119, 118, 118) 1px;
@@ -17,34 +15,47 @@ body {
     
 }
 
-
 .container {
     display: flex;
     flex-wrap: wrap;
     min-width: 560px;
     max-width: 560px;    
-}
+} */
 
 .hover {
     background-color: rgb(54, 54, 54);
 }
 
- /*  .container {
+/* .main {
+    width: 100vh;
+    height: 100vh;
+    margin: auto;
+}
+ */
+
+ .container {
     display: grid;
-    grid-auto-rows: 35px;
-    grid-template-columns: 1px repeat(16, 1fr);
-    column-gap: 0;
-    max-width: 560px;
-    max-height: 560px;
+    grid-template-rows: repeat(16, 35px);
+    grid-template-columns: repeat(16, 35px);
+    max-width: fit-content;
+    /* max-height: 560px; */
   }
   
   .boxes {
     border: 1px solid #ddd;
-    width: 35px;
+    /* width: 35px; */
     margin: 0;
-  } */
+  }
 
 
+
+
+/* 
+16x16 =>   GridSize = 257
+           boxes = 35x35
+           container = 560x560
+
+*/
 
 
 

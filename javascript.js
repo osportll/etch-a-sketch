@@ -4,7 +4,7 @@ let changeGrid = document.querySelector('.change-grid');
 
 
 
-let gridSize = 257;
+let gridSize = 16 * 16;
 
 function createGrid() {
 
