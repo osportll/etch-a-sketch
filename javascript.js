@@ -40,25 +40,95 @@ changeGrid.addEventListener('click', createNewGrid);
 
 function draw() {
 
-let divs = document.querySelectorAll('.boxes');
+    let divs = document.querySelectorAll('.boxes');
+    
+    let isDrawing = false;
+    
+    
+    divs.forEach(smallDivs => {
+        smallDivs.addEventListener('mousedown', () => {
+            smallDivs.classList.add('hover');
+            isDrawing = true;
+            console.log(isDrawing);
+        })
+    
+        smallDivs.addEventListener('mouseup', () => {
+            isDrawing = false;
+            console.log(isDrawing);
+        })
+    });
+    
 
-let isDrawing = false;
+    let mouseDown = 0;
+    
+    document.addEventListener('mousedown', () => {
+        ++mouseDown
+        console.log(mouseDown);
+    })
+    
+    document.addEventListener('mouseup', () => {
+        --mouseDown
+        console.log(mouseDown);
+    })
+    
+
+    divs.forEach(smallDivs => {
+        smallDivs.addEventListener('mouseover', () => {
+
+            if(mouseDown === 1) {
+                isDrawing = true;
+            } else if (mouseDown === 0) {
+                isDrawing = false;
+            }
+    
+            if(isDrawing === true) {
+                smallDivs.classList.add('hover');
+            }
+        })
+    });
 
 
-divs.forEach(smallDivs => {
-    smallDivs.addEventListener('mousedown', (e) => {
+    divs.forEach(smallDivs => {
+        smallDivs.ondragstart = () => {
+            return false;
+        }
+    });
+    };
+
+    
+    
+    /* if(mouseDown === 1) {
         isDrawing = true;
-        console.log(isDrawing);
-        e.stopImmediatePropagation();
-    })
-
-    smallDivs.addEventListener('mouseup', () => {
+    } else if (mouseDown === 0) {
         isDrawing = false;
-        console.log(isDrawing);
-    })
-});
+    } */
+    
+    /* container.addEventListener('mouseleave', () => {
+        if(mouseDown === 1) {
+            isDrawing = true;
+        } else if (mouseDown === 0) {
+            isDrawing = false;
+        }
+    }); */
+    
 
-divs.forEach(smallDivs => {
+
+    
+   /*  container.addEventListener('mousedown', () => {
+            isDrawing = true;
+        });
+
+    container.addEventListener('mouseup', () => {
+            isDrawing = false;
+        }); */
+
+    /* container.addEventListener('mouseleave', () => {
+            isDrawing = false;
+        }); */
+
+    
+
+/* divs.forEach(smallDivs => {
     smallDivs.addEventListener('mouseover', () => {
 
         if(isDrawing === true) {
@@ -68,11 +138,17 @@ divs.forEach(smallDivs => {
 });
 
 divs.forEach(smallDivs => {
+    smallDivs.addEventListener('mouseout', () => {
+        isDrawing = false;
+    })
+});
+
+divs.forEach(smallDivs => {
     smallDivs.ondragstart = () => {
         return false;
     }
-});
-};
+}); */
+
 
 
 

@@ -6,37 +6,12 @@ body {
     margin: 0;
 }
 
-/* .boxes {
-    height: 35px;
-    width: 35px;
-    border: solid rgb(119, 118, 118) 1px;
-    margin: 0;
-    background-color: #eee;
-    
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    min-width: 560px;
-    max-width: 560px;    
-} */
-
 .hover {
     background-color: rgb(54, 54, 54);
 }
 
-/* .main {
-    width: 100vh;
-    height: 100vh;
-    margin: auto;
-}
- */
-
  .container {
     display: grid;
-    /* grid-template-rows: repeat(16, 35px);
-    grid-template-columns: repeat(16, 35px); */
     max-width: fit-content;
   }
 
@@ -46,11 +21,6 @@ body {
     margin: 0;
   }
 
-/* To change the boxes size dinamically I just have to know what is the max width I want the grid to be. If it's 500, then I divide that with the number of boxes that are in one row, ex: 16.
-
-500/16 = 31.25
-
-31.25px should be the size of the boxes so the grid as a whole is 500*500 in size.*/
 
 
 
