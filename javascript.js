@@ -95,6 +95,19 @@ function draw() {
     });
     };
 
+
+    let slider = document.querySelector('.slider');
+    let output = document.querySelector('.output-text');
+    
+    output.textContent = `${rowsAndColumns} x ${rowsAndColumns}`
+
+    /* slider.addEventListener('input', () => {
+        output.textContent = `${slider.value} x ${slider.value}`;
+    }); */
+
+    slider.addEventListener('input', createNewGrid);
+
+
     
     
     /* if(mouseDown === 1) {
