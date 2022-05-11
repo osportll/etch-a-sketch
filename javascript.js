@@ -1,6 +1,9 @@
 let newDiv = document.createElement('div');
+let main = document.querySelector('.main');
 let container = document.querySelector('.container'); 
 let changeGrid = document.querySelector('.change-grid');
+let slider = document.querySelector('.slider');
+let output = document.querySelector('.output-text');
 let maxWidth = 500;
 
 
@@ -19,23 +22,26 @@ function createGrid() {
     container.style.gridTemplateRows = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
     container.style.gridTemplateColumns = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
 
+    output.textContent = `${rowsAndColumns} x ${rowsAndColumns}`
+
 };
 
 createGrid();
 draw();
 
 function createNewGrid() {
-    rowsAndColumns = prompt("Enter a number");
+    rowsAndColumns = slider.value;
     
     document.querySelectorAll(".boxes").forEach((e) => e.parentNode.removeChild(e));
+    output.textContent = `${slider.value} x ${slider.value}`;
 
     createGrid();
     draw();
 
     return rowsAndColumns;
-}
+};
 
-changeGrid.addEventListener('click', createNewGrid);
+slider.addEventListener('input', createNewGrid); 
 
 
 function draw() {
@@ -59,15 +65,15 @@ function draw() {
     });
     
 
-    let mouseDown = 0;
+    let mouseDown = false;
     
     document.addEventListener('mousedown', () => {
-        ++mouseDown
+        mouseDown = true;
         console.log(mouseDown);
     })
     
     document.addEventListener('mouseup', () => {
-        --mouseDown
+        mouseDown = false;
         console.log(mouseDown);
     })
     
@@ -75,9 +81,9 @@ function draw() {
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mouseover', () => {
 
-            if(mouseDown === 1) {
+            if(mouseDown === true) {
                 isDrawing = true;
-            } else if (mouseDown === 0) {
+            } else if (mouseDown === false) {
                 isDrawing = false;
             }
     
@@ -93,19 +99,10 @@ function draw() {
             return false;
         }
     });
-    };
-
-
-    let slider = document.querySelector('.slider');
-    let output = document.querySelector('.output-text');
+};
     
-    output.textContent = `${rowsAndColumns} x ${rowsAndColumns}`
 
-    /* slider.addEventListener('input', () => {
-        output.textContent = `${slider.value} x ${slider.value}`;
-    }); */
 
-    slider.addEventListener('input', createNewGrid);
 
 
     
