@@ -4,10 +4,10 @@ let container = document.querySelector('.container');
 let changeGrid = document.querySelector('.change-grid');
 let slider = document.querySelector('.slider');
 let output = document.querySelector('.output-text');
+let test = document.querySelector('.button');
 let maxWidth = 500;
-
-
 let rowsAndColumns = 16;
+
 
 function createGrid() {
 
@@ -18,6 +18,8 @@ function createGrid() {
     }
 
     let containerSize = maxWidth / rowsAndColumns;
+
+    /* TODO: change this to use template literals instead */
 
     container.style.gridTemplateRows = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
     container.style.gridTemplateColumns = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
@@ -49,46 +51,54 @@ function draw() {
     let divs = document.querySelectorAll('.boxes');
     
     let isDrawing = false;
+
+    /*This listens for clicks on the Rainbow button. When the button is clicked, isClicked is true and drawRainbows is called */
+
+    let isClicked = false;
+    test.addEventListener('click', () => {
+    isClicked = true;
+    console.log('button clicked ' + isClicked);
+    });
     
     
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mousedown', () => {
+
             smallDivs.classList.add('hover');
             isDrawing = true;
-            console.log(isDrawing);
         })
     
         smallDivs.addEventListener('mouseup', () => {
             isDrawing = false;
-            console.log(isDrawing);
         })
     });
     
-
-    let mouseDown = false;
     
     document.addEventListener('mousedown', () => {
-        mouseDown = true;
-        console.log(mouseDown);
+        isDrawing = true;
     })
     
     document.addEventListener('mouseup', () => {
-        mouseDown = false;
-        console.log(mouseDown);
+        isDrawing = false;
     })
     
 
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mouseover', () => {
 
-            if(mouseDown === true) {
-                isDrawing = true;
-            } else if (mouseDown === false) {
-                isDrawing = false;
-            }
-    
             if(isDrawing === true) {
-                smallDivs.classList.add('hover');
+
+                if(isClicked === false) {
+                    smallDivs.classList.add('hover');
+                    
+                } else if (isClicked === true) {
+                    
+                        let randomColor1 = Math.floor(Math.random() * 256);
+                        let randomColor2 = Math.floor(Math.random() * 256);
+                        let randomColor3 = Math.floor(Math.random() * 256);
+
+                        smallDivs.style.cssText = `background-color: rgb(${randomColor1}, ${randomColor2}, ${randomColor3})`;
+                }
             }
         })
     });
@@ -99,70 +109,7 @@ function draw() {
             return false;
         }
     });
+
 };
-    
 
-
-
-
-    
-    
-    /* if(mouseDown === 1) {
-        isDrawing = true;
-    } else if (mouseDown === 0) {
-        isDrawing = false;
-    } */
-    
-    /* container.addEventListener('mouseleave', () => {
-        if(mouseDown === 1) {
-            isDrawing = true;
-        } else if (mouseDown === 0) {
-            isDrawing = false;
-        }
-    }); */
-    
-
-
-    
-   /*  container.addEventListener('mousedown', () => {
-            isDrawing = true;
-        });
-
-    container.addEventListener('mouseup', () => {
-            isDrawing = false;
-        }); */
-
-    /* container.addEventListener('mouseleave', () => {
-            isDrawing = false;
-        }); */
-
-    
-
-/* divs.forEach(smallDivs => {
-    smallDivs.addEventListener('mouseover', () => {
-
-        if(isDrawing === true) {
-            smallDivs.classList.add('hover');
-        }
-    })
-});
-
-divs.forEach(smallDivs => {
-    smallDivs.addEventListener('mouseout', () => {
-        isDrawing = false;
-    })
-});
-
-divs.forEach(smallDivs => {
-    smallDivs.ondragstart = () => {
-        return false;
-    }
-}); */
-
-
-
-
-/**
- * TODO: create a modal that lets you select an specific size of the grid. That way I can control what size all the grids.
- */
 
