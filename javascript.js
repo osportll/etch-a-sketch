@@ -4,9 +4,11 @@ let container = document.querySelector('.container');
 let changeGrid = document.querySelector('.change-grid');
 let slider = document.querySelector('.slider');
 let output = document.querySelector('.output-text');
-let test = document.querySelector('.button');
+let rainbow = document.querySelector('.button');
+let clear = document.querySelector('.clear');
 let maxWidth = 500;
 let rowsAndColumns = 16;
+
 
 
 function createGrid() {
@@ -52,25 +54,29 @@ function draw() {
     
     let isDrawing = false;
 
-    /*This listens for clicks on the Rainbow button. When the button is clicked, isClicked is true and drawRainbows is called */
-
     let isClicked = false;
-    test.addEventListener('click', () => {
+    rainbow.addEventListener('click', () => {
     isClicked = true;
-    console.log('button clicked ' + isClicked);
     });
-    
+
+
+    /* TODO: group all the forEach methods in just one forEach */
     
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mousedown', () => {
 
-            smallDivs.classList.add('hover');
-            isDrawing = true;
-        })
+            if(!isClicked) {
+                smallDivs.classList.add('hover');
+                isDrawing = true;
+
+            } else if (isClicked) {
+                smallDivs.style.cssText = `background-color: rgb(${createRandomColor()}, ${createRandomColor()}, ${createRandomColor()})`;
+            }
+        });
     
         smallDivs.addEventListener('mouseup', () => {
             isDrawing = false;
-        })
+        });
     });
     
     
@@ -86,18 +92,13 @@ function draw() {
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mouseover', () => {
 
-            if(isDrawing === true) {
+            if(isDrawing) {
 
-                if(isClicked === false) {
+                if(!isClicked) {
                     smallDivs.classList.add('hover');
                     
-                } else if (isClicked === true) {
-                    
-                        let randomColor1 = Math.floor(Math.random() * 256);
-                        let randomColor2 = Math.floor(Math.random() * 256);
-                        let randomColor3 = Math.floor(Math.random() * 256);
-
-                        smallDivs.style.cssText = `background-color: rgb(${randomColor1}, ${randomColor2}, ${randomColor3})`;
+                } else if (isClicked) {
+                        smallDivs.style.cssText = `background-color: rgb(${createRandomColor()}, ${createRandomColor()}, ${createRandomColor()})`;
                 }
             }
         })
@@ -112,4 +113,20 @@ function draw() {
 
 };
 
+function createRandomColor(color) {
+    color = Math.floor(Math.random() * 256);
+    return color;
+}
 
+function clearGrid() {
+    document.querySelectorAll('.boxes').forEach((e) => {
+        e.classList.remove('hover');
+        e.removeAttribute('style');
+    
+    });
+
+    draw();
+    
+}
+
+clear.addEventListener('click', clearGrid);
