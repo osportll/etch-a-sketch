@@ -4,7 +4,8 @@ let container = document.querySelector('.container');
 let changeGrid = document.querySelector('.change-grid');
 let slider = document.querySelector('.slider');
 let output = document.querySelector('.output-text');
-let rainbow = document.querySelector('.button');
+let rainbow = document.querySelector('.rainbow');
+let color = document.querySelector('.color');
 let clear = document.querySelector('.clear');
 let maxWidth = 500;
 let rowsAndColumns = 16;
@@ -58,6 +59,11 @@ function draw() {
     rainbow.addEventListener('click', () => {
     isClicked = true;
     });
+
+    color.addEventListener('click', () => {
+        isClicked = false;
+    });
+
 
 
     /* TODO: group all the forEach methods in just one forEach */
