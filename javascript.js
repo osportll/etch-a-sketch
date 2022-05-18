@@ -8,6 +8,7 @@ let rainbow = document.querySelector('.rainbow');
 let color = document.querySelector('.color');
 let colorPicker = document.querySelector('.color-picker');
 let clear = document.querySelector('.clear');
+let eraser = document.querySelector('.eraser');
 let maxWidth = 500;
 let rowsAndColumns = 16;
 
@@ -47,13 +48,12 @@ function createNewGrid() {
     return rowsAndColumns;
 };
 
-
-
 slider.addEventListener('input', createNewGrid); 
 
-let isDrawing = false;
 
-let isClicked = false;
+let isDrawing = false;
+let rainbowClicked = false;
+let eraserClicked = false;
 
 function draw() {
 
@@ -61,16 +61,23 @@ function draw() {
     
     /* let isDrawing = false;
 
-    let isClicked = false; */
+    let rainbowClicked = false; */
+
+    eraser.addEventListener('click', () => {
+        eraserClicked = true;
+        rainbowClicked = false;
+    })
 
     rainbow.addEventListener('click', () => {
-    isClicked = true;
-    console.log(isClicked);
+    rainbowClicked = true;
+    eraserClicked = false;
+    console.log(rainbowClicked);
     });
 
     color.addEventListener('click', () => {
-        isClicked = false;
-        console.log(isClicked);
+        rainbowClicked = false;
+        eraserClicked = false;
+        console.log(rainbowClicked);
     });
 
 
@@ -79,14 +86,18 @@ function draw() {
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mousedown', () => {
 
-            if(!isClicked) {
+            if(!rainbowClicked) {
                 /* smallDivs.classList.add('hover'); */
                 /* smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)'; */
                 smallDivs.style.cssText = `background-color: ${pickAColor()}`;
                 isDrawing = true;
 
-            } else if (isClicked) {
+            } else if (rainbowClicked) {
                 smallDivs.style.cssText = `background-color: rgb(${createRandomColor()}, ${createRandomColor()}, ${createRandomColor()})`;
+            } 
+
+            if(eraserClicked) {
+                smallDivs.style.cssText = 'background-color: #FFFFFF';
             }
         });
     
@@ -110,13 +121,17 @@ function draw() {
 
             if(isDrawing) {
 
-                if(!isClicked) {
+                if(!rainbowClicked) {
                     /* smallDivs.classList.add('hover'); */
                     /* smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)'; */
                     smallDivs.style.cssText = `background-color: ${pickAColor()}`;
                     
-                } else if (isClicked) {
+                } else if (rainbowClicked) {
                         smallDivs.style.cssText = `background-color: rgb(${createRandomColor()}, ${createRandomColor()}, ${createRandomColor()})`;
+                }
+
+                if(eraserClicked) {
+                    smallDivs.style.cssText = 'background-color: #FFFFFF';
                 }
             }
         })
@@ -157,3 +172,5 @@ function pickAColor(colorPicked) {
 };
 
 colorPicker.addEventListener('input', pickAColor);
+
+
