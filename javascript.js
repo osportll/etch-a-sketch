@@ -32,7 +32,7 @@ function createGrid() {
 };
 
 createGrid();
-draw();
+/* draw(); */
 
 function createNewGrid() {
     rowsAndColumns = slider.value;
@@ -46,24 +46,31 @@ function createNewGrid() {
     return rowsAndColumns;
 };
 
+
+
 slider.addEventListener('input', createNewGrid); 
 
+let isDrawing = false;
+
+let isClicked = false;
 
 function draw() {
 
     let divs = document.querySelectorAll('.boxes');
     
-    let isDrawing = false;
+    /* let isDrawing = false;
 
-    let isClicked = false;
+    let isClicked = false; */
+
     rainbow.addEventListener('click', () => {
     isClicked = true;
+    console.log(isClicked);
     });
 
     color.addEventListener('click', () => {
         isClicked = false;
+        console.log(isClicked);
     });
-
 
 
     /* TODO: group all the forEach methods in just one forEach */
@@ -72,7 +79,8 @@ function draw() {
         smallDivs.addEventListener('mousedown', () => {
 
             if(!isClicked) {
-                smallDivs.classList.add('hover');
+                /* smallDivs.classList.add('hover'); */
+                smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)';
                 isDrawing = true;
 
             } else if (isClicked) {
@@ -101,7 +109,8 @@ function draw() {
             if(isDrawing) {
 
                 if(!isClicked) {
-                    smallDivs.classList.add('hover');
+                    /* smallDivs.classList.add('hover'); */
+                    smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)';
                     
                 } else if (isClicked) {
                         smallDivs.style.cssText = `background-color: rgb(${createRandomColor()}, ${createRandomColor()}, ${createRandomColor()})`;
@@ -126,13 +135,13 @@ function createRandomColor(color) {
 
 function clearGrid() {
     document.querySelectorAll('.boxes').forEach((e) => {
-        e.classList.remove('hover');
+        /* e.classList.remove('hover'); */
         e.removeAttribute('style');
     
     });
-
-    draw();
     
 }
 
 clear.addEventListener('click', clearGrid);
+
+draw();
