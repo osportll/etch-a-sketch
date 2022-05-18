@@ -6,6 +6,7 @@ let slider = document.querySelector('.slider');
 let output = document.querySelector('.output-text');
 let rainbow = document.querySelector('.rainbow');
 let color = document.querySelector('.color');
+let colorPicker = document.querySelector('.color-picker');
 let clear = document.querySelector('.clear');
 let maxWidth = 500;
 let rowsAndColumns = 16;
@@ -80,7 +81,8 @@ function draw() {
 
             if(!isClicked) {
                 /* smallDivs.classList.add('hover'); */
-                smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)';
+                /* smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)'; */
+                smallDivs.style.cssText = `background-color: ${pickAColor()}`;
                 isDrawing = true;
 
             } else if (isClicked) {
@@ -110,7 +112,8 @@ function draw() {
 
                 if(!isClicked) {
                     /* smallDivs.classList.add('hover'); */
-                    smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)';
+                    /* smallDivs.style.cssText = 'background-color: rgb(54, 54, 54)'; */
+                    smallDivs.style.cssText = `background-color: ${pickAColor()}`;
                     
                 } else if (isClicked) {
                         smallDivs.style.cssText = `background-color: rgb(${createRandomColor()}, ${createRandomColor()}, ${createRandomColor()})`;
@@ -131,7 +134,7 @@ function draw() {
 function createRandomColor(color) {
     color = Math.floor(Math.random() * 256);
     return color;
-}
+};
 
 function clearGrid() {
     document.querySelectorAll('.boxes').forEach((e) => {
@@ -139,9 +142,18 @@ function clearGrid() {
         e.removeAttribute('style');
     
     });
-    
-}
+};
 
 clear.addEventListener('click', clearGrid);
 
 draw();
+
+
+function pickAColor(colorPicked) {
+    colorPicked = colorPicker.value;
+    console.log(colorPicked);
+
+    return colorPicked;
+};
+
+colorPicker.addEventListener('input', pickAColor);
