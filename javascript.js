@@ -22,12 +22,13 @@ function createGrid() {
         container.appendChild(newDiv.cloneNode(true));
     }
 
-    let containerSize = maxWidth / rowsAndColumns;
+    let squareSize = maxWidth / rowsAndColumns;
+    
 
     /* TODO: change this to use template literals instead */
 
-    container.style.gridTemplateRows = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
-    container.style.gridTemplateColumns = 'repeat('+rowsAndColumns+', '+containerSize+'px)'
+    container.style.gridTemplateRows = 'repeat('+rowsAndColumns+', '+squareSize+'px)'
+    container.style.gridTemplateColumns = 'repeat('+rowsAndColumns+', '+squareSize+'px)'
 
     output.textContent = `${rowsAndColumns} x ${rowsAndColumns}`
 
@@ -166,7 +167,7 @@ draw();
 
 function pickAColor(colorPicked) {
     colorPicked = colorPicker.value;
-    console.log(colorPicked);
+    
 
     return colorPicked;
 };
@@ -174,3 +175,33 @@ function pickAColor(colorPicked) {
 colorPicker.addEventListener('input', pickAColor);
 
 
+let buttons = document.querySelectorAll('button');
+
+function toggleActive() {
+
+    buttons.forEach(e => {
+        
+        e.addEventListener('click', () => {
+        
+            if(e === buttons[0]) {
+                e.classList.add('active');
+                buttons[1].classList.remove('active');
+                buttons[2].classList.remove('active');
+
+            } else if(e === buttons[1]) {
+                e.classList.add('active');
+                buttons[0].classList.remove('active');
+                buttons[2].classList.remove('active');
+
+            } else if(e === buttons[2]) {
+                e.classList.add('active');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.remove('active');
+
+            }
+        })
+    }) 
+
+}
+
+toggleActive();

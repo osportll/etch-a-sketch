@@ -4,16 +4,87 @@
 
 body {
     margin: 0;
+    display: grid;
+    grid-template-areas:"header header"
+                        "buttons  main"
+                        "buttons  main";
+    grid-template-columns: 300px auto;
+    grid-template-rows: 180px 1fr;
+    
+}
+
+.header {
+  grid-area: header;
+  margin: 0 auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  font-size: 35px;
+  color: #33332d;
+}
+
+h1 {
+  margin: 0;
+}
+
+.buttons-wrapper {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+button {
+  appearance: none;
+  background-color: #fff;
+  padding: 10px 20px;
+  border: solid 3px #33332d; 
+  width: 180px;
+  box-shadow: -3px 5px #33332d;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 2px;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #33332d;
+  color: #fff;
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0px 0px #33332d;
+}
+ 
+
+.active {
+  background-color: #33332d;
+  color: #fff;
+}
+
+/* button:focus {
+  background-color: #33332d;
+  color: #fff;
+} */
+
+.main {
+  grid-area: main;
 }
 
 .hover {
     background-color: rgb(54, 54, 54);
 }
 
- .container {
-    display: grid;
-    max-width: fit-content;
-  }
+.container {
+  display: grid;
+  max-width: fit-content;
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgb(153, 153, 153);
+}
 
 
   .boxes {
@@ -23,36 +94,44 @@ body {
 
   .slider {
     appearance: none;
-    background: #d3d3d3;
+    background: #33332d;
     outline: none;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-    height: 7px;
-    border-radius: 10px;
+    border: none;
+    transition: background-color 0.2s;
+    height: 10px;
     margin: 0;
   }
 
   .slider:hover {
-    opacity: 1;
+    background-color: #535350;
   }
 
   .slider::-moz-range-thumb {
     cursor: pointer;
-    width: 13px;
-    height: 13px;
+    background-color: #696666;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
+    border: solid 1px #131311;
     
   }
 
   .slider::-webkit-slider-thumb {
     cursor: pointer;
-    width: 13px;
-    height: 13px;
+    background-color: #696666;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
+    border: solid 1px #131311;
   }
 
   .output-text {
     margin: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 2px;
+
   }
 
   .color-picker {
@@ -66,6 +145,10 @@ body {
 
   .color-picker:hover {
     transform: scale(1.08);
+  }
+
+  .color-picker:active {
+    transform: scale(1);
   }
 
   

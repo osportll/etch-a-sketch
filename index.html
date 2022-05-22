@@ -7,45 +7,57 @@
     <title>Etch-a-sketch</title>
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+    <header class="header">
+        <h1>Etch-a-sketch</h1>
+    </header>
+    
+    <div class="buttons-wrapper">
+
+        <div class="picker-container">
+            <input autocomplete="off" type="color" name="color-picker" class="color-picker" value="#363636">
+        </div>
+        
+        <div class="color-container">
+            <button class="color">
+                Color Mode
+            </button>
+        </div>
+        
+        <div class="rainbow-container">
+            <button class="rainbow">
+                Rainbow Mode
+            </button>
+        </div>
+        
+        <div class="eraser-container">
+            <button class="eraser">
+                Eraser
+            </button>
+        </div>
+        
+        <div class="clear-container">
+            <button class="clear">
+                Clear
+            </button>
+        </div>
+        
+        <div class="slider-container">
+            <input autocomplete="off" type="range" min="1" max="64" value="16" class="slider">
+            <p class="output-text"></p>
+        </div>
+        
+    </div>
 
     <div class="main">
         <div class="container">
         </div>
-    </div>
-
-    <div class="slider-container">
-        <input autocomplete="off" type="range" min="1" max="64" value="16" class="slider">
-        <p class="output-text"></p>
-    </div>
-
-    <div class="color-container">
-        <button class="color">
-            Color Mode
-        </button>
-    </div>
-
-    <div class="rainbow-container">
-        <button class="rainbow">
-            Rainbow Mode
-        </button>
-    </div>
-
-    <div class="eraser-container">
-        <button class="eraser">
-            Eraser
-        </button>
-    </div>
-
-    <div class="clear-container">
-        <button class="clear">
-            Clear
-        </button>
-    </div>
-
-    <div class="picker-container">
-        <input autocomplete="off" type="color" name="color-picker" class="color-picker" value="#363636">
     </div>
 
     
