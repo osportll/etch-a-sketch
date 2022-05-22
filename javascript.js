@@ -25,8 +25,6 @@ function createGrid() {
     let squareSize = maxWidth / rowsAndColumns;
     
 
-    /* TODO: change this to use template literals instead */
-
     container.style.gridTemplateRows = 'repeat('+rowsAndColumns+', '+squareSize+'px)'
     container.style.gridTemplateColumns = 'repeat('+rowsAndColumns+', '+squareSize+'px)'
 
@@ -80,9 +78,6 @@ function draw() {
         eraserClicked = false;
         console.log(rainbowClicked);
     });
-
-
-    /* TODO: group all the forEach methods in just one forEach */
     
     divs.forEach(smallDivs => {
         smallDivs.addEventListener('mousedown', () => {

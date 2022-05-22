@@ -14,51 +14,64 @@
 </head>
 <body>
     
+    <div class="main-wrapper">
     <header class="header">
         <h1>Etch-a-sketch</h1>
     </header>
     
-    <div class="buttons-wrapper">
+    
+        <div class="buttons-wrapper">
+        
+            <div class="picker-container">
+                <input autocomplete="off" type="color" name="color-picker" class="color-picker" value="#363636">
+            </div>
+            
+            <div class="color-container">
+                <button class="color">
+                    Color Mode
+                </button>
+            </div>
+            
+            <div class="rainbow-container">
+                <button class="rainbow">
+                    Rainbow Mode
+                </button>
+            </div>
+            
+            <div class="eraser-container">
+                <button class="eraser">
+                    Eraser
+                </button>
+            </div>
+            
+            <div class="clear-container">
+                <button class="clear">
+                    Clear
+                </button>
+            </div>
+            
+            <div class="slider-container">
+                <input autocomplete="off" type="range" min="1" max="64" value="16" class="slider">
+                <p class="output-text"></p>
+            </div>
+            
+        </div>
+        
+        <div class="main">
+            <div class="container">
+            </div>
+        </div>
+        
 
-        <div class="picker-container">
-            <input autocomplete="off" type="color" name="color-picker" class="color-picker" value="#363636">
-        </div>
-        
-        <div class="color-container">
-            <button class="color">
-                Color Mode
-            </button>
-        </div>
-        
-        <div class="rainbow-container">
-            <button class="rainbow">
-                Rainbow Mode
-            </button>
-        </div>
-        
-        <div class="eraser-container">
-            <button class="eraser">
-                Eraser
-            </button>
-        </div>
-        
-        <div class="clear-container">
-            <button class="clear">
-                Clear
-            </button>
-        </div>
-        
-        <div class="slider-container">
-            <input autocomplete="off" type="range" min="1" max="64" value="16" class="slider">
-            <p class="output-text"></p>
-        </div>
-        
-    </div>
+    <footer class="footer">
+       <p class="made-by">Made by</p> 
+       <a href="https://github.com/osportll" class="github" target="_blank">
+        <img src="/home/oportill/repos/etch-a-sketch/GitHub-Mark-32px.png" class="img" alt="Github logo">
+        osportll
+        </a>
+    </footer>
 
-    <div class="main">
-        <div class="container">
-        </div>
-    </div>
+</div>
 
     
 </body>
