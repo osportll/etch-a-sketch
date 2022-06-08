@@ -15,4 +15,5 @@ Future features to implement:
 - Undo button
 
 [Live Preview](https://osportll.github.io/etch-a-sketch/)
+
 ![alt text](Sketch-example.png "App Preview")
