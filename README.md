@@ -16,4 +16,4 @@ Future features to implement:
 
 [Live Preview](https://osportll.github.io/etch-a-sketch/)
 
-![alt text](RPS.png "App Preview")
+![alt text](Sketch-example.png "App Preview")
